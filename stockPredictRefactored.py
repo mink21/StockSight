@@ -69,24 +69,20 @@ def getReal(start, end, company, companyName):
     actualPrices = data['Close'].values
     return actualPrices
 
-def Display(trainStart, trainEnd, start, end, company, companyName, predict, real):
-    if not predict and not real:
-        return
-    predictedPrices = Predict(trainStart, trainEnd, start, end, company, companyName)
-    actualPrices = getReal(start, end, company, companyName)
-    if predict:
-        plt.plot(predictedPrices, color='green', label=f"Predicted {company} Price")
-    if real:
-        plt.plot(actualPrices, color="black", label=f"Actual {company} Price")
-    plt.title(f"{company} Share Price")
-    plt.xlabel('Time')
-    plt.ylabel(f'{company} Share Price')
-    plt.legend ()
-    plt.show()
+# def Display(trainStart, trainEnd, start, end, company, companyName, predict, real):
+#     if not predict and not real:
+#         return
+#     predictedPrices = Predict(trainStart, trainEnd, start, end, company, companyName)
+#     actualPrices = getReal(start, end, company, companyName)
+#     if predict:
+#         plt.plot(predictedPrices, color='green', label=f"Predicted {company} Price")
+#     if real:
+#         plt.plot(actualPrices, color="black", label=f"Actual {company} Price")
+#     plt.title(f"{company} Share Price")
+#     plt.xlabel('Time')
+#     plt.ylabel(f'{company} Share Price')
+#     plt.legend ()
+#     plt.show()
 
 
-Display(dt.datetime(2020,1,1), dt.datetime(2021,1,1), dt.datetime(2021,1,1), dt.datetime.now(), "FB", "yahoo", True, True)
-# real_data = [model_inputs[len(model_inputs) + 1 - prediction_days:len(model_inputs+1), 0]]
-# real_data = np.array(real_data)
-# real_data = np.reshape (real_data, (real_data.shape[0], real_data.shape [1],1))
-# print(f"Prediction: {prediction}")
+# Display(dt.datetime(2020,1,1), dt.datetime(2021,1,1), dt.datetime(2021,1,1), dt.datetime.now(), "FB", "yahoo", True, True)
