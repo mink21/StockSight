@@ -12,25 +12,16 @@ def index(request):
     return HttpResponse("Hello, world. You're at the prediction index.")
 
 #This is what I think the display function should look like after we pick the right options
-# def Display(request, companyID, optionsID):
-#     company = get_object_or_404(Company, pk = companyID)
-#     options = get_object_or_404(Options, pk = optionsID)
-#     trainStart = options.startDate
-#     trainEnd = options.endDate
-#     start = options.startDate
-#     end = options.endDate
-#     tickerSymbol = company.tickerSymbol
-#     companyName = company.companyName
-#     predict = options.predict
-
-def Display(request):
-    trainStart = dt.datetime(2020,1,1)
-    trainEnd = dt.datetime(2021,1,1)
-    start = dt.datetime(2021,1,1)
-    end = dt.datetime(2022,1,1)
-    tickerSymbol = "FB"
-    companyName = "yahoo"
-    predict = True
+def Display(request, companyID, optionsID):
+    company = get_object_or_404(Company, pk = companyID)
+    options = get_object_or_404(Options, pk = optionsID)
+    trainStart = options.startDate
+    trainEnd = options.endDate
+    start = options.startDate
+    end = options.endDate
+    tickerSymbol = company.tickerSymbol
+    companyName = company.companyName
+    predict = options.predict
     DisplayBackend(trainStart, trainEnd, start, end, tickerSymbol, companyName, predict)
 
 def DisplayBackend(trainStart, trainEnd, start, end, tickerSymbol, companyName, predict):
@@ -46,3 +37,12 @@ def DisplayBackend(trainStart, trainEnd, start, end, tickerSymbol, companyName, 
     plt.legend ()
     plt.show()
     
+
+# def Display(request):
+#     trainStart = dt.datetime(2020,1,1)
+#     trainEnd = dt.datetime(2021,1,1)
+#     start = dt.datetime(2021,1,1)
+#     end = dt.datetime(2022,1,1)
+#     tickerSymbol = "FB"
+#     companyName = "yahoo"
+#     predict = True
