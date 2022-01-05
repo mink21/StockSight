@@ -11,7 +11,6 @@ import datetime as dt
 def index(request):
     return HttpResponse("Hello, world. You're at the prediction index.")
 
-#This is what I think the display function should look like after we pick the right options
 def Display(request, companyID, optionsID):
     company = get_object_or_404(Company, pk = companyID)
     options = get_object_or_404(Options, pk = optionsID)
@@ -36,13 +35,20 @@ def DisplayBackend(trainStart, trainEnd, start, end, tickerSymbol, companyName, 
     plt.ylabel(f'{tickerSymbol} Share Price')
     plt.legend ()
     plt.show()
-    
 
-# def Display(request):
-#     trainStart = dt.datetime(2020,1,1)
-#     trainEnd = dt.datetime(2021,1,1)
-#     start = dt.datetime(2021,1,1)
-#     end = dt.datetime(2022,1,1)
-#     tickerSymbol = "FB"
-#     companyName = "yahoo"
-#     predict = True
+def pickCompany(request):
+    companyList = Company.objects.order_by("companyName")[:5]
+    #lastest_question_list.reverse()
+    context = {
+        'companyList':companyList
+    }
+    return render(request, "prediction/companyPicker.html", context)
+
+def pickOptions(request, companyID):
+    optionsList = Options.objects.order_by("endDate")[:5]
+    #lastest_question_list.reverse()
+    context = {
+        'optionsList':optionsList,
+        'companyID':companyID
+    }
+    return render(request, "prediction/optionPicker.html", context)
