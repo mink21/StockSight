@@ -1,7 +1,7 @@
 {% if companyList %}
 <ul>
     {% for company in companyList %}
-        <li><a href="{% url 'prediction:pickOptions' company.id %}">{{company.companyName}}</a></li>
+        <li><a href="{% url 'prediction:pickOptions' sourceID company.id %}">{{company.companyName}}</a></li>
     {% endfor %}
 </ul>
 {% else %}

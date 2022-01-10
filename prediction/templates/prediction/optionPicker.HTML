@@ -1,7 +1,7 @@
 {% if optionsList %}
 <ul>
     {% for option in optionsList %}
-        <li><a href="{% url 'prediction:display' companyID option.id%}">Predict from {{option.startDate}} using data from {{option.trainStartDate}} to {{option.trainEndDate}} to train</a></li>
+        <li><a href="{% url 'prediction:display' sourceID companyID option.id%}">Predict from {{option.startDate}} using data from {{option.trainStartDate}} to {{option.trainEndDate}} to train</a></li>
     {% endfor %}
 </ul>
 {% else %}

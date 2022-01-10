@@ -1,0 +1,9 @@
+{% if sourceList %}
+<ul>
+    {% for source in sourceList %}
+        <li><a href="{% url 'prediction:pickCompany' source.id %}">{{source.source}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
